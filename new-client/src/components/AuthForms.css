@@ -1,0 +1,61 @@
+/* Form container */
+.auth-form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Form title */
+  .auth-form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Input fields */
+  .auth-form-container input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Submit button */
+  .auth-form-container button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .auth-form-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error message */
+  .auth-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Success message */
+  .auth-success {
+    color: green;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  

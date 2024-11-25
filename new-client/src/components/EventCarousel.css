@@ -1,0 +1,52 @@
+/* EventCarousel.css */
+
+/* The carousel container */
+.carousel {
+  position: relative;
+  width: 80%; /* Adjust the width to 60% to allow space for the 20% padding */
+  margin: 0 auto;
+  padding-left: 10%; /* 20% padding on the left */
+  padding-right: 10%; /* 20% padding on the right */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+/* The images inside the carousel */
+.carousel-images {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-image {
+  width: 100%; /* Ensure the image takes full width of the container */
+  height: 55vh; /* Fixed height for smooth consistency */
+  object-fit: cover; /* Ensure the image covers the space without distortion */
+  display: block; /* Remove extra space below the image */
+  border-radius: 10px; /* Optional: rounded corners */
+}
+
+/* Styling for the navigation dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px; /* Space between dots */
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5); /* Light color for inactive dots */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.dot.active {
+  background-color: #fff; /* Highlight active dot */
+}
+
+.dot:hover {
+  background-color: #bbb; /* Slight change on hover */
+}

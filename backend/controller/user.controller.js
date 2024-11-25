@@ -1,3 +1,7 @@
+const User = require("../models/user"); // Import User model
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
 // Register User
 const registerUser = async (req, res) => {
   try {
@@ -22,11 +26,12 @@ const registerUser = async (req, res) => {
     const newUser = new User({ username, email, password: hashedPassword });
     await newUser.save();
 
-    res
-      .status(201)
-      .json({ msg: "User registered successfully", user: newUser });
+    res.status(201).json({
+      msg: "User registered successfully",
+      user: { username, email }, // Return only non-sensitive data
+    });
   } catch (error) {
-    console.error(error);
+    console.error("Error during user registration:", error.message || error);
     res.status(500).send({ msg: "Internal Server Error" });
   }
 };
@@ -58,9 +63,13 @@ const loginUser = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.status(200).json({ msg: "Login successful", token, user });
+    res.status(200).json({
+      msg: "Login successful",
+      token,
+      user: { id: user._id, username: user.username, email: user.email }, // Return non-sensitive user data
+    });
   } catch (error) {
-    console.error(error);
+    console.error("Error during user login:", error.message || error);
     res.status(500).send({ msg: "Internal Server Error" });
   }
 };
@@ -72,7 +81,7 @@ const getUserById = async (req, res) => {
     if (!user) return res.status(404).send({ msg: "User not found" });
     res.status(200).json(user);
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching user by ID:", error.message || error);
     res.status(500).send({ msg: "Internal Server Error" });
   }
 };
@@ -87,7 +96,7 @@ const updateUser = async (req, res) => {
     if (!updatedUser) return res.status(404).send({ msg: "User not found" });
     res.status(200).json(updatedUser);
   } catch (error) {
-    console.error(error);
+    console.error("Error updating user:", error.message || error);
     res.status(500).send({ msg: "Internal Server Error" });
   }
 };
@@ -99,7 +108,7 @@ const deleteUser = async (req, res) => {
     if (!deletedUser) return res.status(404).send({ msg: "User not found" });
     res.status(200).send({ msg: "User deleted successfully" });
   } catch (error) {
-    console.error(error);
+    console.error("Error deleting user:", error.message || error);
     res.status(500).send({ msg: "Internal Server Error" });
   }
 };

@@ -1,0 +1,81 @@
+/* Event Card Grid Container */
+.event-card-grid-container {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Grid Layout */
+.event-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual Card */
+.event-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styling */
+.event-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Event Details */
+.event-details {
+  padding: 15px;
+  text-align: left;
+}
+
+.event-details h3 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.event-details p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .event-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .event-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .event-card-image {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card-image {
+    height: 120px;
+  }
+}

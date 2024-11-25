@@ -1,18 +1,24 @@
+require("dotenv").config(); // This should be at the top of the file.
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("./configuration/connection"); // Import the connectDB function
+const connectDB = require("./configuration/connection");
 const eventRoutes = require("./routes/events.routes");
 const userRoutes = require("./routes/user.routes");
+
 
 const app = express();
 const port = 8000;
 
 // Middleware
-app.use(express.json());
-app.use(cors());
+app.use(express.json()); // Parse incoming JSON requests
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow frontend to communicate
+}));
+
+
 
 // Routes
-app.use("/events", eventRoutes);
+app.use("/events", eventRoutes); // Ensure this matches the route you want
 app.use("/users", userRoutes);
 
 // Default route
